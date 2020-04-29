@@ -9,31 +9,30 @@ def new_chart():
     return {}
 
 
-def set_main_title(object, title):
-    """Creates ability to save the proposed title as 'main_title' in the new_chart dict"""
-    object['main_title'] = title
-
-
-def set_x_title(object, title):
+def set_x_axis(object, dataframe):
     """Creates ability to save the proposed label as 'x_title' in the new_chart dict"""
-    object['x_title'] = title
+    print(dataframe.to_string())
+    x_axis_string = input("Select Column for X Axis or type 'index' for the index column")
+    object['x_axis'] = x_axis_string
 
 
-def set_y_title(object, title):
+def set_y_axis(object):
     """Creates ability to save the proposed label as 'y_title' in the new_chart dict"""
-    object['y_title'] = title
+    y_axis_string = input("Select Column for Y Axis or type 'index' for the index column")
+    object['y_axis'] = y_axis_string
 
 
-def data_type(object, title):
-    """Creates ability to specify the proposed data type as 'data_type' in the new_chart dict"""
-    object['data_type'] = title
-
-
-def use_data(object, series):
-    """Creates ability to specify the proposed data as 'data' in the new_chart dict"""
-    object['data'] = series
-
-
-def chart_type(object, chart_style):
+def chart_type(object):
     "Creates ability for chart style to be stored in dict as 'chart_style"
-    object['chart_style'] = chart_style
+    chart_style_string = input("Select Chart Type - 'line, bar or scatter'").lower()
+    object['chart_style'] = chart_style_string
+
+
+def set_main_title(object):
+    """Creates ability to save the proposed title as 'main_title' in the new_chart dict"""
+    main_title_string = input("Type Proposed Chart Title").capitalize()
+    object['main_title'] = main_title_string
+
+
+
+
