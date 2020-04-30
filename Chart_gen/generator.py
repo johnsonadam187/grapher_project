@@ -34,8 +34,8 @@ def file_check(filename):
         df1 = pd.read_html(filename)
         return df1
     else:
-        df1 = pd.read_html(filename)
-        return df1
+        print("Incorrect File Type Selected")
+        sys.exit()
 
 
 def transpose_data(dataframe):
@@ -137,8 +137,8 @@ def generate_line_graph(obj, dataframe):
     "Function for plotting and displaying line graph"
     if obj['x_axis'] == 'index':
         plt.plot(dataframe.index, dataframe[obj['y_axis']])
-        plt.xticks(len(dataframe.index), dataframe.index)
-        plt.yticks(len(dataframe[obj['y_axis']]), dataframe[obj['y_axis']])
+        plt.xticks(np.linspace(0, len(dataframe.index)), dataframe.index, rotation='vertical')
+        # plt.yticks(np.linspace(0, len(dataframe[obj['y_axis']])), dataframe[obj['y_axis']])
         plt.xlabel(" ") #fix this later
         plt.ylabel(obj['y_axis'])
         plt.title(obj['main_title'])
@@ -146,8 +146,8 @@ def generate_line_graph(obj, dataframe):
         plt.show()
     elif obj['y_axis'] == 'index':
         plt.plot(dataframe[obj['x_axis']], dataframe.index)
-        plt.yticks(len(dataframe.index), dataframe.index)
-        plt.xticks(len(dataframe[obj['x_axis']]), dataframe[obj['x_axis']])
+        plt.yticks(np.linspace(0, len(dataframe.index)), dataframe.index)
+        plt.xticks(np.linspace(0, len(dataframe[obj['x_axis']])), dataframe[obj['x_axis']], rotation= 'vertical')
         plt.xlabel(obj['x_axis'])
         plt.ylabel(" ") #fix this later
         plt.title(obj['main_title'])
@@ -155,8 +155,8 @@ def generate_line_graph(obj, dataframe):
         plt.show()
     else:
         plt.plot(dataframe[obj['x_axis']], dataframe[obj['y_axis']])
-        plt.yticks(len(dataframe[obj['y_axis']]), dataframe[obj['y_axis']])
-        plt.xticks(len(dataframe[obj['x_axis']]), dataframe[obj['x_axis']])
+        # plt.yticks(np.linspace(0, len(dataframe[obj['y_axis']])), dataframe[obj['y_axis']])
+        plt.xticks(np.linspace(0, len(dataframe[obj['x_axis']])), dataframe[obj['x_axis']], rotation='vertical')
         plt.xlabel(obj['x_axis'])
         plt.ylabel(obj['y_axis'])
         plt.title(obj['main_title'])
